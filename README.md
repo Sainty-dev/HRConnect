@@ -1,79 +1,92 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# HRConnect
 
-# Getting Started
+HRConnect is an employee management system that allows you to create, read, update, delete, and edit employee details. This application is built using TypeScript and React, ensuring a type-safe and scalable solution.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Table of Contents
 
-## Step 1: Start the Metro Server
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Usage](#usage)
+- [Contributing](#contributing)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Getting Started
 
-```bash
-# using npm
-npm start
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-# OR using Yarn
-yarn start
-```
 
-## Step 2: Start your Application
+## Features
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+- Create, read, update, and delete employee details.
+- Search functionality for employees.
+- Form validation for employee details.
+- Toast notifications for success and error messages.
+- Loading indicators for API calls.
+- Address autocomplete functionality.
 
-### For Android
+## Technologies Used
 
-```bash
-# using npm
-npm run android
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A superset of JavaScript that adds static typing.
+- **Axios**: A promise-based HTTP client for making API requests.
+- **CSS**: For styling the components.
+- **Context API**: For state management.
 
-# OR using Yarn
-yarn android
-```
+## Setup Instructions
 
-### For iOS
+1. **Clone the repository:**
+    ```sh
+    git clone https://github.com/Sainty-dev/HRConnect.git
+    cd HRConnect
+    ```
 
-```bash
-# using npm
-npm run ios
+2. **Install dependencies:**
+    ```sh
+    npm install
+    ```
 
-# OR using Yarn
-yarn ios
-```
+3. **Start the development server:**
+    ```sh
+    npm start
+    ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+4. **Build for production:**
+    ```sh
+    npm run build
+    ```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Usage
 
-## Step 3: Modifying your App
+- **Employee List Screen:**
+    - View a list of all employees.
+    - Search for employees using the search bar.
 
-Now that you have successfully run the app, let's modify it.
+- **Employee Form Screen:**
+    - Add a new employee.
+    - Edit an existing employee's details.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## Contributing
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
 
-## Congratulations! :tada:
+1. **Fork the repository**
+2. **Create your feature branch:**
+    ```sh
+    git checkout -b feature/YourFeature
+    ```
+3. **Commit your changes:**
+    ```sh
+    git commit -m 'Add some feature'
+    ```
+4. **Push to the branch:**
+    ```sh
+    git push origin feature/YourFeature
+    ```
+5. **Submit a pull request**
 
-You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
