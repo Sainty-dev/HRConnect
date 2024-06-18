@@ -30,3 +30,31 @@ export const ICON_SIZE = {
   miniAvatar: 60,
   avatar: 80,
 } as const;
+
+export const PADDING = {
+  xSmall: 2,
+  small: 6,
+  medium: 8,
+  large: 12,
+  xLarge: 16,
+  xxLarge: 20,
+  xxxLarge: 24,
+} as const;
+
+export const GAP = {
+  xSmall: 4,
+  small: 8,
+  medium: 12,
+  large: 16,
+  xLarge: 24,
+} as const;
+
+export const FONT_SIZE = {
+  title: 24,
+  heading: 20,
+  subHeading: 16,
+  large: 14,
+  medium: 12,
+  small: 10,
+  xSmall: 8,
+} as const;
