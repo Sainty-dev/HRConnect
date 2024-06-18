@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: 'bold',
     marginBottom: MARGIN.medium,
+    color: colors.FOREGROUND_TEXT,
   },
 });
 export default styles;
