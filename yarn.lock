@@ -2415,6 +2415,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/datetimepicker@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "@react-native-community/datetimepicker@npm:8.1.1"
+  dependencies:
+    invariant: ^2.2.4
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-windows: "*"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: ef821df963fe59ba9e7d9b7fff569531ef624b2e14e2dcf0216fc07cd1505d246d5bb4cc5fac6e45f335f10449f236937efdc5af7348c6f563f60eb89f16d2a5
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.74.84":
   version: 0.74.84
   resolution: "@react-native/assets-registry@npm:0.74.84"
@@ -2853,6 +2869,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-native@npm:^0.73.0":
+  version: 0.73.0
+  resolution: "@types/react-native@npm:0.73.0"
+  dependencies:
+    react-native: "*"
+  checksum: a764ca5d876dae3c109da449f736c44271b3b236d0d6e836c078247af1419f6d851600c56bb0c26f3e0d1b4be6eaac56b65c1f74ad0f0d05baf8b65dd1d5c597
+  languageName: node
+  linkType: hard
+
 "@types/react-test-renderer@npm:^18.0.0":
   version: 18.3.0
   resolution: "@types/react-test-renderer@npm:18.3.0"
@@ -2862,7 +2887,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.2.6":
+"@types/react@npm:*, @types/react@npm:^18.3.3":
   version: 18.3.3
   resolution: "@types/react@npm:18.3.3"
   dependencies:
@@ -3111,11 +3136,13 @@ __metadata:
     "@fortawesome/free-regular-svg-icons": ^6.5.2
     "@fortawesome/free-solid-svg-icons": ^6.5.2
     "@fortawesome/react-native-fontawesome": ^0.3.2
+    "@react-native-community/datetimepicker": ^8.1.1
     "@react-native/babel-preset": 0.74.84
     "@react-native/eslint-config": 0.74.84
     "@react-native/metro-config": 0.74.84
     "@react-native/typescript-config": 0.74.84
-    "@types/react": ^18.2.6
+    "@types/react": ^18.3.3
+    "@types/react-native": ^0.73.0
     "@types/react-test-renderer": ^18.0.0
     babel-jest: ^29.6.3
     eslint: ^8.19.0
@@ -3128,9 +3155,10 @@ __metadata:
     react-native-gesture-handler: ^2.16.2
     react-native-reanimated: ^3.12.0
     react-native-svg: ^15.3.0
+    react-native-ui-datepicker: ^2.0.3
     react-native-ui-lib: ^7.24.0
     react-test-renderer: 18.2.0
-    typescript: 5.0.4
+    typescript: ^5.4.5
   languageName: unknown
   linkType: soft
 
@@ -4287,7 +4315,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.8.15":
+"dayjs@npm:^1.11.10, dayjs@npm:^1.8.15":
   version: 1.11.11
   resolution: "dayjs@npm:1.11.11"
   checksum: 84788275aad8a87fee4f1ce4be08861df29687aae6b7b43dd65350118a37dda56772a3902f802cb2dc651dfed447a5a8df62d88f0fb900dba8333e411190a5d5
@@ -8584,6 +8612,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-ui-datepicker@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-native-ui-datepicker@npm:2.0.3"
+  dependencies:
+    dayjs: ^1.11.10
+    lodash: ^4.17.21
+    react-native-wheely: ^0.6.0
+    uninstall: ^0.0.0
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: fabfa33021a54467e33f12701531031ccd85991ab420cc3e3c709d2a8eff021f72b696f7f221461ec74e4bf69c2546966d87449a1f0ea6f2bde3f320c747df4b
+  languageName: node
+  linkType: hard
+
 "react-native-ui-lib@npm:^7.24.0":
   version: 7.24.0
   resolution: "react-native-ui-lib@npm:7.24.0"
@@ -8612,7 +8655,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:0.74.2":
+"react-native-wheely@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "react-native-wheely@npm:0.6.0"
+  checksum: 3223c0056160f02696e0d980198b6b3ada6b401c7fba17882253e5700c4066c5c2b9834213317e6c190a1e991acfec7c5526ee08ca89d5eed133c247386cd180
+  languageName: node
+  linkType: hard
+
+"react-native@npm:*, react-native@npm:0.74.2":
   version: 0.74.2
   resolution: "react-native@npm:0.74.2"
   dependencies:
@@ -9888,23 +9938,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.0.4":
-  version: 5.0.4
-  resolution: "typescript@npm:5.0.4"
+"typescript@npm:^5.4.5":
+  version: 5.4.5
+  resolution: "typescript@npm:5.4.5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 82b94da3f4604a8946da585f7d6c3025fff8410779e5bde2855ab130d05e4fd08938b9e593b6ebed165bda6ad9292b230984f10952cf82f0a0ca07bbeaa08172
+  checksum: 53c879c6fa1e3bcb194b274d4501ba1985894b2c2692fa079db03c5a5a7140587a1e04e1ba03184605d35f439b40192d9e138eb3279ca8eee313c081c8bcd9b0
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@5.0.4#~builtin<compat/typescript>":
-  version: 5.0.4
-  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"
+"typescript@patch:typescript@^5.4.5#~builtin<compat/typescript>":
+  version: 5.4.5
+  resolution: "typescript@patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>::version=5.4.5&hash=29ae49"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: d26b6ba97b6d163c55dbdffd9bbb4c211667ebebc743accfeb2c8c0154aace7afd097b51165a72a5bad2cf65a4612259344ff60f8e642362aa1695c760d303ac
+  checksum: 2373c693f3b328f3b2387c3efafe6d257b057a142f9a79291854b14ff4d5367d3d730810aee981726b677ae0fd8329b23309da3b6aaab8263dbdccf1da07a3ba
   languageName: node
   linkType: hard
 
@@ -9962,6 +10012,13 @@ __metadata:
   version: 2.1.0
   resolution: "unicode-property-aliases-ecmascript@npm:2.1.0"
   checksum: 243524431893649b62cc674d877bd64ef292d6071dd2fd01ab4d5ad26efbc104ffcd064f93f8a06b7e4ec54c172bf03f6417921a0d8c3a9994161fe1f88f815b
+  languageName: node
+  linkType: hard
+
+"uninstall@npm:^0.0.0":
+  version: 0.0.0
+  resolution: "uninstall@npm:0.0.0"
+  checksum: c6cadbaf1a6f746a6a8871bb38b2b6020cf4bb72d2bdd6b5442d569b14d8c8f84014c7ce93cdb2946916f7ae22cbc758f8a6f94c2ee1a1898149df8aaac5599d
   languageName: node
   linkType: hard
 
