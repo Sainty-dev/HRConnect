@@ -58,3 +58,13 @@ export const FONT_SIZE = {
   small: 10,
   xSmall: 8,
 } as const;
+
+export const MARGIN = {
+  xSmall: 2,
+  small: 4,
+  medium: 6,
+  large: 8,
+  xLarge: 12,
+  xxLarge: 16,
+  xxxLarge: 24,
+} as const;
