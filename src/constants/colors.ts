@@ -1,6 +1,6 @@
 const metallicRed = '#A62C2B';
 const purple = '#242335';
-const orangeAccent = '#E17B00';
+const orangeAccent = '#FFFFFF';
 const grey = '#767070';
 const lightGrey = '#353535';
 const lightPurple = '#732f9a';
