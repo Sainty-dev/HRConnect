@@ -8,6 +8,7 @@ import {AddressDetails, AddressSearchInputProps} from './interface';
 import styles from './styles';
 import colors from '../../../constants/colors';
 import {API_KEYS} from '../../../constants/api';
+import { Text } from 'react-native-ui-lib';
 
 const AddressSearchInput: React.FC<AddressSearchInputProps> = ({
   onSelectAddress,
@@ -46,37 +47,42 @@ const AddressSearchInput: React.FC<AddressSearchInputProps> = ({
   };
 
   return (
-    <View style={styles.container}>
-      <GooglePlacesAutocomplete
-        placeholder="Search for an address"
-        minLength={2}
-        autoFocus={false}
-        returnKeyType={'search'}
-        listViewDisplayed="auto"
-        fetchDetails={true}
-        onPress={handlePress}
-        key={API_KEYS.GOOGLE_MAPS_API_KEY}
-        styles={{
-          textInputContainer: {
-            width: '100%',
-          },
-          description: {
-            fontWeight: 'bold',
-          },
-          textInput: {
-            backgroundColor: colors.COMPONENT_BACKGROUND,
-            borderRadius: 10,
-            height: 50,
-            color: colors.FOREGROUND_TEXT,
-          },
-          predefinedPlacesDescription: {
-            color: '#1faadb',
-          },
-        }}
-        nearbyPlacesAPI="GooglePlacesSearch"
-        debounce={200}
-      />
-    </View>
+    <>
+      <Text style={styles.textFieldLabel} color={colors.FOREGROUND_TEXT}>
+        Address
+      </Text>
+      <View style={styles.container}>
+        <GooglePlacesAutocomplete
+          placeholder="Search for an address"
+          minLength={2}
+          autoFocus={false}
+          returnKeyType={'search'}
+          listViewDisplayed="auto"
+          fetchDetails={true}
+          onPress={handlePress}
+          key={API_KEYS.GOOGLE_MAPS_API_KEY}
+          styles={{
+            textInputContainer: {
+              width: '100%',
+            },
+            description: {
+              fontWeight: 'bold',
+            },
+            textInput: {
+              backgroundColor: colors.COMPONENT_BACKGROUND,
+              borderRadius: 10,
+              height: 50,
+              color: colors.FOREGROUND_TEXT,
+            },
+            predefinedPlacesDescription: {
+              color: '#1faadb',
+            },
+          }}
+          nearbyPlacesAPI="GooglePlacesSearch"
+          debounce={200}
+        />
+      </View>
+    </>
   );
 };
 

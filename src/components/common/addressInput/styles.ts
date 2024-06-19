@@ -8,5 +8,9 @@ const styles = StyleSheet.create({
     padding: 0,
     backgroundColor: colors.COMPONENT_BACKGROUND,
   },
+  textFieldLabel: {
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
 });
 export default styles;
