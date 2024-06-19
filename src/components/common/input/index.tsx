@@ -40,16 +40,15 @@ const TextInput = ({control, name, rules, error, ...props}: TextInputProps) => {
                     placeholder={props.placeholder}
                     color={error ? colors.ERROR : colors.FOREGROUND_TEXT}
                     containerStyle={styles.textFieldContainer}
-                    style={styles.textField}
+                    style={[styles.textField]}
                     underlineColorAndroid="transparent"
                     onBlur={onBlur}
-                    onChangeText={e => {
-                      const trimmedText = e.trim();
-                      onChange(trimmedText);
-                    }}
+                    onChangeText={onChange}
                     value={value}
                   />
                 </View>
+              </View>
+              <View style={styles.row}>
                 {error && (
                   <Animated.View
                     entering={FadeInLeft.duration(
@@ -69,24 +68,24 @@ const TextInput = ({control, name, rules, error, ...props}: TextInputProps) => {
                       <FontAwesomeIcon
                         icon={faTriangleExclamation}
                         size={ICON_SIZE.small}
-                        color={colors.ICON}
+                        color={colors.ERROR}
                       />
                     </Button>
                   </Animated.View>
                 )}
-              </View>
 
-              {showError && error && (
-                <Animated.View
-                  entering={FadeInUp.duration(ANIMATION_DURATION_IN_MIL_SEC)}
-                  exiting={FadeOutUp.duration(ANIMATION_DURATION_IN_MIL_SEC)}
-                  layout={Layout.duration(
-                    ANIMATION_DURATION_IN_MIL_SEC,
-                  ).springify()}
-                  style={styles.errorView}>
-                  <Text color={colors.FOREGROUND_TEXT}>{error}</Text>
-                </Animated.View>
-              )}
+                {showError && error && (
+                  <Animated.View
+                    entering={FadeInUp.duration(ANIMATION_DURATION_IN_MIL_SEC)}
+                    exiting={FadeOutUp.duration(ANIMATION_DURATION_IN_MIL_SEC)}
+                    layout={Layout.duration(
+                      ANIMATION_DURATION_IN_MIL_SEC,
+                    ).springify()}
+                    style={styles.errorView}>
+                    <Text color={colors.FOREGROUND_TEXT}>{error}</Text>
+                  </Animated.View>
+                )}
+              </View>
             </View>
           </>
         )}

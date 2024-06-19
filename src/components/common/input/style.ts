@@ -4,7 +4,7 @@ import {BORDER_RADIUS, BORDER_WIDTH} from '../../../constants/sizes';
 
 const styles = StyleSheet.create({
   errorView: {
-    width: '100%',
+    width: '70%',
     height: 'auto',
     backgroundColor: colors.ERROR,
     marginTop: '2%',
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 5,
   },
-  row: {flexDirection: 'row', alignItems: 'flex-end'},
+  row: {flexDirection: 'row', justifyContent: 'space-between',marginTop: 5},
   column: {flexDirection: 'column', width: '100%'},
 });
 
