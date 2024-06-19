@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
   },
   iconButtonContainer: {
     backgroundColor: colors.BUTTON_COLOR,
-    padding: 10,
+    padding: 5,
+    paddingHorizontal: 10,
     borderRadius: 50,
     flexDirection: 'row',
     alignItems: 'center',

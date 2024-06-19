@@ -23,7 +23,7 @@ const ButtonWithIcon = ({
         size={iconSize ?? ICON_SIZE.small}
         color={iconColor ?? colors.FOREGROUND_TEXT}
       />
-      <Text style={styles.label}>{label}</Text>
+      <Text style={[styles.label,{fontSize:10,textAlign:'center'}]}>{label}</Text>
     </TouchableOpacity>
   );
 };
