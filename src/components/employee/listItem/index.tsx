@@ -2,6 +2,7 @@ import React from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
 import styles from './style';
 import EmployeeDetailsScreen from '../../../screens/employeeDetails';
+import { employeeDetailsScreen } from '../../../constants/screens';
 
 interface Employee {
   id: number;
@@ -22,7 +23,7 @@ const EmployeeItem = ({
 }) => (
   <TouchableOpacity
     style={styles.employeeItemContainer}
-    onPress={() => navigation.navigate(EmployeeDetailsScreen, {employee})}>
+    onPress={() => navigation.navigate(employeeDetailsScreen, {employee})}>
     <View style={styles.employeeRow}>
       <View style={styles.counterView}>
         <Text style={styles.counterText}>{itemNumber}</Text>

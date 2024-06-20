@@ -35,12 +35,15 @@ const EmployeeListScreen = ({navigation}: {navigation: any}) => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   useEffect(() => {
-    const loadEmployees = async () => {
-      const loadedEmployees = await loadEmployeesFromStorage();
-      setEmployees(loadedEmployees);
-    };
-    loadEmployees();
-  }, []);
+    const unsubscribe = navigation.addListener('focus', async () => {
+      const loadEmployees = async () => {
+        const loadedEmployees = await loadEmployeesFromStorage();
+        setEmployees(loadedEmployees);
+      };
+      loadEmployees();
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
