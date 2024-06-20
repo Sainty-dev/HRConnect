@@ -32,7 +32,8 @@ const SkillItem: React.FC<Props> = ({
         placeholderTextColor={colors.FOREGROUND_TEXT}
         value={item.yearExp.toString()}
         keyboardType="numeric"
-        onChangeText={text => updateSkill(index, 'yearExp', parseInt(text))}
+        defaultValue="0"
+        onChangeText={text => updateSkill(index, 'yearExp', text)}
       />
       <ReactNativeInput
         style={styles.input}

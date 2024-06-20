@@ -22,9 +22,9 @@ import EmployeeItem from '../../components/employee/listItem';
 import colors from '../../constants/colors';
 import styles from './styles';
 import {filterEmployees, loadEmployeesFromStorage} from './utils';
-import Employee from './interface';
 import CustomDatePicker from '../../components/common/calenderPicker';
 import {employeeDetailsScreen} from '../../constants/screens';
+import {Employee} from '../interface';
 
 const EmployeeListScreen = ({navigation}: {navigation: any}) => {
   const [employees, setEmployees] = useState<Employee[]>([]);
@@ -93,8 +93,12 @@ const EmployeeListScreen = ({navigation}: {navigation: any}) => {
         <FlatList
           data={filteredEmployees}
           keyExtractor={item => item.id.toString()}
-          renderItem={({item}) => (
-            <EmployeeItem employee={item} navigation={navigation} />
+          renderItem={({item, index}) => (
+            <EmployeeItem
+              itemNumber={index + 1}
+              employee={item}
+              navigation={navigation}
+            />
           )}
           ListEmptyComponent={<Placeholder />}
         />
