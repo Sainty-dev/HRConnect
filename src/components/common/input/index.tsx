@@ -22,7 +22,7 @@ const TextInput = ({
   control,
   onChangeText,
   name,
-  value,
+  value: textValue,
   rules,
   error,
   ...props
@@ -33,9 +33,14 @@ const TextInput = ({
       <Controller
         control={control}
         rules={rules}
-        render={({field: {onBlur}}) => {
+        render={({field: {onBlur, onChange, value}}) => {
           console.log('value', value);
 
+          const handleTextChange = (text: string) => {
+            onChange(text); //Is used for form validation
+            onChangeText(text); // is used to update the value in the parent component
+            value = text; //update the value in the controller
+          };
           return (
             <>
               <View style={styles.column}>
@@ -54,9 +59,9 @@ const TextInput = ({
                       style={[styles.textField]}
                       underlineColorAndroid="transparent"
                       onBlur={onBlur}
-                      onChangeText={onChangeText}
+                      onChangeText={handleTextChange}
                       onChange={value => onChangeText(value)}
-                      value={value}
+                      value={textValue}
                     />
                   </View>
                 </View>
