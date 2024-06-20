@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     width: '25%',
     padding: 10,
     backgroundColor: colors.COMPONENT_BACKGROUND,
+    color: colors.FOREGROUND_TEXT,
     marginHorizontal: 10,
   },
   skillContainer: {
