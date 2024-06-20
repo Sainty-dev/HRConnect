@@ -31,7 +31,7 @@ export const filterEmployees = (
       ? new Date(employee.dob).getFullYear().toString() === filterYear
       : true;
     const matchesSkill = filterSkill
-      ? employee.skills.some(skill =>
+      ? employee?.skills?.some(skill =>
           skill.skill.toLowerCase().includes(filterSkill.toLowerCase()),
         )
       : true;
