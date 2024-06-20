@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 5,
   },
-  row: {flexDirection: 'row', justifyContent: 'space-between',marginTop: 5},
+  row: {flexDirection: 'row', justifyContent: 'space-between', marginTop: 5},
   column: {flexDirection: 'column', width: '100%'},
 });
 

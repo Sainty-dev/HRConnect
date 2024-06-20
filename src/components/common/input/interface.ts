@@ -7,4 +7,5 @@ export interface TextInputBaseProps {
   rules?: ControllerProps['rules'];
   error?: string;
   inputStyle: StyleProp<ViewStyle>;
+  value?: string;
 }
