@@ -1,4 +1,5 @@
 # HRConnect
+![Sample Image](https://firebasestorage.googleapis.com/v0/b/randfontein-34eb7.appspot.com/o/Green_and_White_Modern_Get_Our_Apps_Now_Instagram_Post_-removebg-preview.png?alt=media&token=8469ad0e-dd05-4a6f-a531-813a7f8b8b11)
 
 HRConnect is an employee management system that allows you to create, read, update, delete, and edit employee details. This application is built using TypeScript and React, ensuring a type-safe and scalable solution.
 
