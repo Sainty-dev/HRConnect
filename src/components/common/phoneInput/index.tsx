@@ -11,9 +11,11 @@ import TextInput from '../input';
 const PhoneInput = ({
   countryCode,
   onChangeCountry,
+  onChangeText,
   control,
   name,
   error,
+  value,
 }: PhoneInputProps) => {
   return (
     <View style={styles.container}>
@@ -42,8 +44,10 @@ const PhoneInput = ({
             inputStyle={styles.formLabel}
             keyboardType="phone-pad"
             autoComplete="tel"
+            onChangeText={onChangeText}
             textContentType="telephoneNumber"
             placeholder="Phone number (optional)"
+            value={value}
             rules={phoneNumberValidationRules}
           />
         </View>
