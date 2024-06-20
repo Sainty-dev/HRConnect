@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {Platform, View} from 'react-native';
 import {
   GooglePlacesAutocomplete,
   GooglePlaceDetail,
@@ -8,7 +8,11 @@ import {AddressDetails, AddressSearchInputProps} from './interface';
 import styles from './styles';
 import colors from '../../../constants/colors';
 import {API_KEYS} from '../../../constants/api';
-import { Text } from 'react-native-ui-lib';
+import {Text} from 'react-native-ui-lib';
+import {set} from 'react-hook-form';
+import TextInput from '../input';
+import {FONT_SIZE} from '../../../constants/sizes';
+import {presenceRule} from '../../../utils/validations/textInputRules';
 
 const AddressSearchInput: React.FC<AddressSearchInputProps> = ({
   onSelectAddress,
