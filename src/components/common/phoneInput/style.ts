@@ -5,7 +5,7 @@ import {
   GAP,
   PADDING,
 } from '../../../constants/sizes';
-import { text } from '@fortawesome/fontawesome-svg-core';
+import {text} from '@fortawesome/fontawesome-svg-core';
 import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
