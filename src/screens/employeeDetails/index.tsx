@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, FlatList, Alert} from 'react-native';
+import {View, Text, FlatList, Platform} from 'react-native';
 import {useForm} from 'react-hook-form';
 import {Country, CountryCode} from 'react-native-country-picker-modal';
 
@@ -21,7 +21,7 @@ import BaseContainer from '../../components/employee/baseContainer';
 import {addSkill, deleteSkill, saveEmployee, updateSkill} from './utils';
 import styles from './style';
 import SkillItem from '../../components/employee/skillListItem';
-import {EditEmployeeHandlerArgs, Employee} from './interface';
+import {EditEmployeeHandlerArgs, Employee} from '../interface';
 
 const EmployeeDetailsScreen = ({
   route,
@@ -43,7 +43,6 @@ const EmployeeDetailsScreen = ({
     postalCode: '',
     email: '',
   };
-
   const [editableEmployee, setEditableEmployee] = useState<Employee>(employee);
   const [countryCode, setCountryCode] = useState<CountryCode>('ZA');
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -64,6 +63,10 @@ const EmployeeDetailsScreen = ({
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
+    setEditableEmployee({
+      ...editableEmployee,
+      dob: date.toISOString().split('T')[0],
+    });
   };
 
   const handleChangeCountry = (country: Country) => {
@@ -75,16 +78,22 @@ const EmployeeDetailsScreen = ({
     country: string;
     postalCode: string;
   }) => {
-    Alert.alert(
-      'Selected Address',
-      `City: ${details.city}\nCountry: ${details.country}\nPostal Code: ${details.postalCode}`,
-    );
+    setEditableEmployee({
+      ...editableEmployee,
+      city: details.city,
+      country: details.country,
+      postalCode: details.postalCode,
+    });
   };
 
   return (
     <BaseContainer>
       <View style={styles.container}>
-        <Text style={styles.header}>Employee Details</Text>
+        <Text style={styles.header}>
+          {editableEmployee != null
+            ? 'Edit Employee Details'
+            : 'Add New Employee'}
+        </Text>
         <View style={styles.formItemWrapper}>
           <TextInput
             style={errors.firstName ? {borderColor: colors.ERROR_BORDER} : {}}
@@ -94,6 +103,7 @@ const EmployeeDetailsScreen = ({
             error={errors.firstName?.message}
             inputStyle={styles.formLabel}
             textContentType="name"
+            value={editableEmployee?.firstName}
             onChangeText={text =>
               setEditableEmployee({...editableEmployee, firstName: text})
             }
@@ -109,6 +119,7 @@ const EmployeeDetailsScreen = ({
             error={errors.lastName?.message}
             inputStyle={styles.formLabel}
             textContentType="name"
+            value={editableEmployee?.lastName}
             onChangeText={text =>
               setEditableEmployee({...editableEmployee, lastName: text})
             }
@@ -119,7 +130,11 @@ const EmployeeDetailsScreen = ({
           <PhoneInput
             label=""
             countryCode={countryCode}
+            value={editableEmployee?.contactNumber}
             onChangeCountry={handleChangeCountry}
+            onChangeText={text =>
+              setEditableEmployee({...editableEmployee, contactNumber: text})
+            }
             control={control}
             error={errors.contactNumber?.message}
             name="contactNumber"
@@ -135,23 +150,49 @@ const EmployeeDetailsScreen = ({
             inputStyle={styles.formLabel}
             textContentType="emailAddress"
             rules={emailCreationRules}
-            onChange={text =>
+            value={editableEmployee?.email}
+            onChangeText={text =>
               setEditableEmployee({...editableEmployee, email: text})
             }
           />
         </View>
         <View style={styles.formItemWrapper}>
           <CustomDatePicker
-            label="Choose your date"
+            label={
+              editableEmployee && editableEmployee?.dob != ''
+                ? 'View Date of Birth'
+                : 'Choose your date'
+            }
             onChange={handleDateChange}
-            initialDate={selectedDate}
+            initialDate={
+              editableEmployee && editableEmployee?.dob != ''
+                ? new Date(editableEmployee.dob)
+                : selectedDate
+            }
           />
         </View>
         <View style={styles.formItemWrapper}>
-          <AddressSearchInput
-            query={{key: API_KEYS.GOOGLE_MAPS_API_KEY}}
-            onSelectAddress={handleSelectAddress}
-          />
+          {Platform.OS === 'android' ? (
+            <AddressSearchInput
+              query={{key: API_KEYS.GOOGLE_MAPS_API_KEY}}
+              onSelectAddress={handleSelectAddress}
+            />
+          ) : (
+            <TextInput
+              style={errors.address ? {borderColor: colors.ERROR_BORDER} : {}}
+              control={control}
+              name="address"
+              placeholder="Address"
+              error={errors.address?.message}
+              inputStyle={styles.formLabel}
+              textContentType="fullStreetAddress"
+              value={editableEmployee?.address}
+              onChangeText={text =>
+                setEditableEmployee({...editableEmployee, address: text})
+              }
+              rules={presenceRule('Address')}
+            />
+          )}
         </View>
         <View style={styles.formItemWrapper}>
           <TextInput
@@ -160,9 +201,12 @@ const EmployeeDetailsScreen = ({
             name="postalCode"
             placeholder="Postal Code"
             error={errors.postalCode?.message}
+            value={editableEmployee?.postalCode}
             inputStyle={styles.formLabel}
             textContentType="postalCode"
-            onChange={text => console.log('Postal Code', text)}
+            onChangeText={text =>
+              setEditableEmployee({...editableEmployee, postalCode: text})
+            }
             rules={presenceRule('Postal Code')}
           />
         </View>
@@ -175,6 +219,7 @@ const EmployeeDetailsScreen = ({
             error={errors.country?.message}
             inputStyle={styles.formLabel}
             textContentType="countryName"
+            value={editableEmployee?.country}
             onChangeText={text =>
               setEditableEmployee({...editableEmployee, country: text})
             }
@@ -200,9 +245,7 @@ const EmployeeDetailsScreen = ({
                   setEditableEmployee,
                 )
               }
-              deleteSkill={index =>
-                deleteSkill(index, editableEmployee, setEditableEmployee)
-              }
+              deleteSkill={index => deleteSkill(index, setEditableEmployee)}
               editableEmployee={editableEmployee}
               setEditableEmployee={setEditableEmployee}
             />
@@ -211,7 +254,7 @@ const EmployeeDetailsScreen = ({
         <View style={styles.formItemWrapper}>
           <Button
             label="Add New Skill"
-            onClick={() => addSkill(editableEmployee, setEditableEmployee)}
+            onClick={() => addSkill(setEditableEmployee)}
           />
         </View>
         <View style={[styles.formItemWrapper, {alignItems: 'flex-end'}]}>
