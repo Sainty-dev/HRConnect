@@ -1,48 +1,22 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Employee} from '../interface';
 
-interface Employee {
-  id: number;
-  firstName: string;
-  lastName: string;
-  contactNumber: string;
-  dob: string;
-  skills: string[];
-}
-
-const initialEmployees: Employee[] = [
-  {
-    id: 1,
-    firstName: 'John',
-    lastName: 'Doe',
-    contactNumber: '123-456-7890',
-    dob: '2020-01-01',
-    skills: ['JavaScript', 'React Native'],
-  },
-  {
-    id: 2,
-    firstName: 'Jane',
-    lastName: 'Smith',
-    contactNumber: '123-456-7891',
-    dob: '2015-05-12',
-    skills: ['Java', 'Spring'],
-  },
-  // Add more initial employees here
-];
-
+//Get employees from storage
 export const loadEmployeesFromStorage = async (): Promise<Employee[]> => {
   try {
     const storedEmployees = await AsyncStorage.getItem('employees');
     if (storedEmployees) {
       return JSON.parse(storedEmployees);
     } else {
-      return initialEmployees;
+      return [];
     }
   } catch (error) {
     console.error(error);
-    return initialEmployees;
+    return [];
   }
 };
 
+//Filter employees based on search query, year and skill
 export const filterEmployees = (
   employees: Employee[],
   searchQuery: string,
@@ -58,7 +32,7 @@ export const filterEmployees = (
       : true;
     const matchesSkill = filterSkill
       ? employee.skills.some(skill =>
-          skill.toLowerCase().includes(filterSkill.toLowerCase()),
+          skill.skill.toLowerCase().includes(filterSkill.toLowerCase()),
         )
       : true;
 

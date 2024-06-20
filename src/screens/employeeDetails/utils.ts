@@ -1,7 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Employee, Skill} from './interface';
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
+import {employeeListScreen} from '../../constants/screens';
+import {Employee, Skill} from '../interface';
 
+// Add a new skill
 export const addSkill = (
   setEditableEmployee: React.Dispatch<React.SetStateAction<Employee>>,
 ) => {
@@ -14,6 +16,7 @@ export const addSkill = (
   }));
 };
 
+// Delete a skill
 export const deleteSkill = (
   index: number,
   setEditableEmployee: React.Dispatch<React.SetStateAction<Employee>>,
@@ -24,6 +27,7 @@ export const deleteSkill = (
   }));
 };
 
+// Update skill details
 export const updateSkill = (
   index: number,
   field: keyof Skill,
@@ -34,14 +38,15 @@ export const updateSkill = (
   const updatedSkills = editableEmployee?.skills.map((skill, i) =>
     i === index ? {...skill, [field]: value} : skill,
   );
+
   setEditableEmployee({...editableEmployee, skills: updatedSkills});
 };
 
+// Save employee details to storage
 export const saveEmployee = async (
   editableEmployee: Employee,
   navigation: any,
 ) => {
-console.log(editableEmployee);
   try {
     // Validate all fields
     const requiredFields = [
@@ -50,11 +55,14 @@ console.log(editableEmployee);
       'contactNumber',
       'dob',
       'address',
-      'city',
       'country',
       'postalCode',
       'email',
     ];
+    if (editableEmployee === null) {
+      Alert.alert('Validation Error', `All Employee details are required.`);
+      return;
+    }
     for (const field of requiredFields) {
       if (!editableEmployee[field as keyof Employee]) {
         Alert.alert('Validation Error', `${field} is required.`);
@@ -78,11 +86,13 @@ console.log(editableEmployee);
       );
     }
 
-    navigation.goBack();
+    navigation.navigate(employeeListScreen);
   } catch (error) {
     console.error(error);
   }
 };
+
+// Generate a random employee ID
 export const generateEmployeeId = (): string => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const randomLetters = Array.from(
